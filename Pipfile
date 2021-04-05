@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+azure-storage-blob = "==12.3.2"
+pyodbc = "==4.0.30"
+Flask = "==1.1.2"
+Flask-SQLAlchemy = "==2.4.3"
+Flask-WTF = "==0.14.3"
+SQLAlchemy = "==1.3.17"
+Werkzeug = "==1.0.1"
+WTForms = "==2.3.1"
+pymssql = "*"
+
+[requires]
+python_version = "3.7"

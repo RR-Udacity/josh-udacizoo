@@ -26,12 +26,17 @@ class Animal(db.Model):
             randomFilename = str(uuid.uuid1())
             filename = randomFilename + '.' + fileExtension
             try:
-                # TODO: Get a blob client and upload the blob
-                pass
+                # TODO: Get a blob client and upload the blob (upload the new one)
+                blob_client = blob_service.get_blob_client(container=blob_container, blob=filename)
+                blob_client.upload_blob(file)
                 if self.image_path:
-                    # TODO: Get a blob client and delete the previous blob
+                    # TODO: Get a blob client and delete the previous blob (this is the image associated with the previous filename in the db)
+                    blob_client = blob_service.get_blob_client(container=blob_container, blob=self.image_path)
+                    blob_client.delete_blob()
                     pass
             except Exception as err:
                 flash(err)
+                
+            # update the new filename in the animal object
             self.image_path = filename
         db.session.commit()
